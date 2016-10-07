@@ -17,56 +17,7 @@ use App\stock_card;
 use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['web']], function () {
-    /**
-     * Show Task Dashboard
-     */
-    Route::get('/', function () {
-        return view('tasks', [
-            'tasks' => Task::orderBy('created_at', 'asc')->get()
-        ]);
-    });
-
-    /**
-     * Add New Task
-     */
-    Route::post('/task', function (Request $request) {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('/')
-                ->withInput()
-                ->withErrors($validator);
-        }
-
-        $task = new Task;
-        $task->name = $request->name;
-        $task->save();
-
-        return redirect('/');
-    });
-
-    /**
-     * Delete Task
-     */
-    Route::delete('/task/{id}', function ($id) {
-        Task::findOrFail($id)->delete();
-
-        return redirect('/');
-    });
-	
-	/**
-     * Show Stockcard Dashboard
-     */
-    //Route::get('/stockcards', function () {
-        //return view('stockcards', [
-        //  'stock_card' => stock_card::orderBy('audit_date', 'asc')->get()
-        //]);
-		//return view('stockcard');
-	//	Route::get('index/', 'UserController@index');
-    //});
+    
 	
 	Route::resource('stockcards', 'StockcardController');
-	//Route::get('/stockcards', 'StockcardController@index');
 });

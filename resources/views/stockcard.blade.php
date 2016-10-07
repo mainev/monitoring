@@ -21,8 +21,6 @@
                                     <tr>
 										<td class="table-text"><div>{{ $stockcard->audit_date }}</div></td>
                                         <td class="table-text"><div>{{ $stockcard->company_descs }}</div></td>
-
-                                        
                                     </tr>
                                 @endforeach
                             </tbody>
