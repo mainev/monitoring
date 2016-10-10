@@ -103,7 +103,7 @@ return [
 		 'sqlsrv' => [
             'driver'   => 'sqlsrv',
             'host'     => env('DB_HOST', 'sqlsvr\prd'),
-            'database' => env('DB_DATABASE', 'Nutratech_DB'),
+            'database' => env('DB_DATABASE', 'Nutratech_UAT'),
             'username' => env('DB_USERNAME', 'sa'),
             'password' => env('DB_PASSWORD', 'nidaros'),
             'charset'  => 'utf8',

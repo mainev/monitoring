@@ -17,15 +17,24 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', 'StockcardController@index');
-    Route::resource('stockcards', 'StockcardController');
+    //Route::get('/', 'StockcardController@index');
+    //Route::resource('stockcards', 'StockcardController');
 
-    /*
-    Route::get('/admin', function () {
-        return view('admin_template');
+  
+    Route::get('/', function () {
+        return view('stockcard');
     });
-*/
 
 
-    Route::get('test', 'TestController@index');
+  
+    
+    /**
+     * REST Controllers
+     */
+    Route::group(array('prefix' => 'api'), function()
+    {
+          Route::resource('stockcards', 'StockcardController@stockcards');
+    
+    });
+    
 });
