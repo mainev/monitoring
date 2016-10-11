@@ -22,7 +22,12 @@ Route::group(['middleware' => ['web']], function () {
 
   
     Route::get('/', function () {
-        return view('stockcard');
+        $default_menu = "1";
+        return view('stockcard', ['selected_menu' => $default_menu]);
+    });
+    
+     Route::get('/drafts', function () {
+        return view('for_approval', ['selected_menu' => "2"]);
     });
 
 
@@ -34,6 +39,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(array('prefix' => 'api'), function()
     {
           Route::resource('stockcards', 'StockcardController@stockcards');
+          Route::get('get_drafts', ['uses' =>'StockcardController@get_drafts']);
     
     });
     

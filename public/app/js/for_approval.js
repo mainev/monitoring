@@ -3,32 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 var table;
+var drafts = {};
 $(document).ready(function () {
-    initTable();
 
-//     $('#date_filter').datepicker({
-//        autoclose: true,
-//        inline: true,
-//        
-//        onSelect: function (dateText, inst) {
-//            console.log("hello");
-//            alert('hello');
-//        }
-//    });
-//    
+    var item_category_cd = $('#item_category_cd').val();
+    var item_category = $(this).find(":selected").text();
+    document.getElementById('item_category').innerText = item_category;
 
-
-
+    initDraftsTable(item_category_cd);
+    $('#item_category_cd').on('change', function (d) {
+        var item_category_cd = $(this).find(":selected").val();
+        var item_category = $(this).find(":selected").text();
+        document.getElementById('item_category').innerText = item_category;
+        initDraftsTable(item_category_cd);
+    });
 });
-function initTable() {
 
 
-  
+function initDraftsTable(item_category_cd) {
 
-
-    table = $("#table_stockcards").dataTable({
+    table = $("#table_drafts").dataTable({
         "bStateSave": false,
         "bLengthChange": false,
         "filter": false,
@@ -47,7 +42,7 @@ function initTable() {
         "bDestroy": true,
         "bServerSide": false,
         "bAutoWidth": false,
-        "sAjaxSource": "api/stockcards",
+        "sAjaxSource": "api/get_drafts",
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {},
         "fnServerData": function (sSource, aoData, fnCallback) {
 
@@ -56,12 +51,12 @@ function initTable() {
                 "contentType": "application/json; charset=utf-8",
                 "type": "GET",
                 "url": sSource,
-                "data": {},
+                "data": {"item_category_cd": item_category_cd},
                 "success": function (msg) {
                     drafts = msg;
                     var data = {"aaData": drafts};
                     fnCallback(data);
-
+                    document.getElementById('number_of_rows').innerText = drafts.length;
 
                 },
                 "error": function (msg) {
@@ -120,17 +115,11 @@ function initTable() {
                 "mDataProp": "created_date", "sTitle": "Date Created"
             },
             {
-                "mDataProp": "approved_date", "sTitle": "Date Approved"
-            },
-            {
-                "mDataProp": "approved_by", "sTitle": "Approved By"
-            },
-            {
                 "mDataProp": "item_remarks", "sTitle": "Item Remarks"
             }]
 
 
     });
 
+
 }
-;

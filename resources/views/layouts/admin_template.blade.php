@@ -31,8 +31,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables_themeroller.css")}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.css")}}" rel="stylesheet" type="text/css" />
 
+        <!-- Datepicker -->
+        <link href="{{ asset("/bower_components/AdminLTE/plugins/datepicker/datepicker3.css")}}" rel="stylesheet" type="text/css" />
 
-         <!-- REQUIRED JS SCRIPTS -->
+
+        <!-- REQUIRED JS SCRIPTS -->
         <!-- jQuery 2.1.3 -->
         <script src="{{ asset ("/bower_components/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js") }}"></script>
         <!-- Bootstrap 3.3.2 JS -->
@@ -42,12 +45,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <style>
 
             body {
-                /*               
-                                margin: 0;
-                                padding: 0;
-                                width: 100%;
-                                display: table;
-                                font-weight: 100;*/
                 font-family: Roboto, "Helvetica Neue", sans-serif;
             }
 
@@ -77,10 +74,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </ol>
                 </section>
                 -->
-
-                <section class="content" >
+                <div class="">
                     @yield('content')
-                </section>
+                </div>
+
             </div>
 
 
@@ -88,14 +85,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </div>
 
-       
+
 
 
         <!--PLUGINS-->
         <!-- Datatables -->
-        
         <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js") }}"></script>
         <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
+        <!-- Datepicker -->
+        <script src="{{ asset ("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js") }}"></script>
+
+        <!-- JAVASCRIPTS -->
+        <script src="{{ asset ("/app/js/admin_template.js") }}" type="text/javascript"></script>
+
+
 
     </body>
 </html>
