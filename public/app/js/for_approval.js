@@ -5,23 +5,26 @@
  */
 var table;
 var drafts = {};
+var item_category_cd;
+var item_category;
 $(document).ready(function () {
 
-    var item_category_cd = $('#item_category_cd').val();
-    var item_category = $(this).find(":selected").text();
+    item_category_cd = $('#item_category_cd').val();
+    item_category = $(this).find(":selected").text();
     document.getElementById('item_category').innerText = item_category;
 
     initDraftsTable(item_category_cd);
     $('#item_category_cd').on('change', function (d) {
-        var item_category_cd = $(this).find(":selected").val();
-        var item_category = $(this).find(":selected").text();
+        item_category_cd = $(this).find(":selected").val();
+        item_category = $(this).find(":selected").text();
         document.getElementById('item_category').innerText = item_category;
-        initDraftsTable(item_category_cd);
+        // initDraftsTable(item_category_cd);
+        table.api().ajax.reload();
     });
 });
 
 
-function initDraftsTable(item_category_cd) {
+function initDraftsTable() {
 
     table = $("#table_drafts").dataTable({
         "bStateSave": false,
@@ -30,7 +33,7 @@ function initDraftsTable(item_category_cd) {
         "responsive": true,
         "ordering": false,
         "orderClasses": false,
-        "pageLength": 6,
+        "pageLength": 5,
         "info": false,
         //  "scrollY": "400px",
         // "scrollY": "300px",

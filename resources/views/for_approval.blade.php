@@ -9,7 +9,7 @@
     </h1>
 
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">For Approval</li>
     </ol>
 </section>
@@ -40,7 +40,7 @@
                                         </div>-->
                 </div>
                  <div class="box-body" >
-                    <table id="table_drafts" class="table  table-bordered table-hover table-striped" ></table>
+                    <table id="table_drafts" class="table table-bordered table-hover table-striped" ></table>
                 </div>
 
             </div>

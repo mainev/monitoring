@@ -5,28 +5,27 @@
  */
 
 var table;
+var item_limit;
 $(document).ready(function () {
+    $('#no_of_records').val(500);
+
+    item_limit = $('#no_of_records').val();
+
+    document.getElementById('displayed_item_limit').innerText = item_limit;
     initTable();
 
-//     $('#date_filter').datepicker({
-//        autoclose: true,
-//        inline: true,
-//        
-//        onSelect: function (dateText, inst) {
-//            console.log("hello");
-//            alert('hello');
-//        }
-//    });
-//    
 
-
+    /**
+     * Table will reload after 60 seconds.
+     * @returns {undefined}
+     */
+    setTimeout(function () {
+        //window.location.reload(1);
+        table.api().ajax.reload();
+    }, 60000);
 
 });
 function initTable() {
-
-
-  
-
 
     table = $("#table_stockcards").dataTable({
         "bStateSave": false,
@@ -37,8 +36,6 @@ function initTable() {
         "orderClasses": false,
         "pageLength": 6,
         "info": false,
-        //  "scrollY": "400px",
-        // "scrollY": "300px",
         "scrollX": true,
         // "scrollCollapse": false,
         "scrollCollapse": false,
@@ -56,7 +53,7 @@ function initTable() {
                 "contentType": "application/json; charset=utf-8",
                 "type": "GET",
                 "url": sSource,
-                "data": {},
+                "data": {'item_limit': item_limit},
                 "success": function (msg) {
                     drafts = msg;
                     var data = {"aaData": drafts};
@@ -134,3 +131,9 @@ function initTable() {
 
 }
 ;
+
+function resetTable() {
+    item_limit = $('#no_of_records').val();
+     document.getElementById('displayed_item_limit').innerText = item_limit;
+    table.api().ajax.reload();
+}

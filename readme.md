@@ -1,14 +1,12 @@
-# Laravel Quickstart - Basic
+# Inventory Control Monitoring - (in Laravel)
 
 ## Quck Installation
 
-    git clone https://github.com/laravel/quickstart-basic quickstart
+    git clone https://github.com/mainev/monitoring.git
 
-    cd quickstart
+    cd monitoring
 
     composer install
-
-    php artisan migrate
 
     php artisan serve
 

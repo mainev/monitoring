@@ -12,7 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <title>{{ $page_title or "ICMonitoring" }}</title>
-
+	<link href="{{ asset("/images/monitoring_icon.png") }}" rel="shortcut icon" type="image/x-icon" />
         <!-- Bootstrap 3.3.2 -->
         <link href="{{ asset("/bower_components/AdminLTE/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->
@@ -27,10 +27,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- PLUGINS-->
         <!-- Datatables -->
+         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.css")}}" rel="stylesheet" type="text/css" />
+
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css")}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables_themeroller.css")}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.css")}}" rel="stylesheet" type="text/css" />
-
+       
         <!-- Datepicker -->
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datepicker/datepicker3.css")}}" rel="stylesheet" type="text/css" />
 
@@ -47,8 +48,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
             body {
                 font-family: Roboto, "Helvetica Neue", sans-serif;
             }
+            
+            table {
+                font-size: 11px;
+            }
+            
+            .content-wrapper{
+                background-image: url('{{ asset("images/office-still-life.jpg") }}');
+                
+            }
+            section.content-header{
+                color: aliceblue;
+            }
+            
+            div.box{
+                opacity: 0.9;
+            }
 
         </style>
+<!--        <script>
+setTimeout(function () {
+    window.location.reload(1);
+}, 60000);</script>-->
     </head>
     <body class="skin-blue sidebar-mini">
         <div class="wrapper ">
@@ -61,19 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
 
-                <!--
-                <section class="content-header">
-                    <h1>
-                        {{ $page_title or "Page Title" }}
-                        <small>{{ $page_description or null }}</small>
-                    </h1>
-                  
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                        <li class="active">Here</li>
-                    </ol>
-                </section>
-                -->
+             
                 <div class="">
                     @yield('content')
                 </div>
