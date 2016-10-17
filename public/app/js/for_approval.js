@@ -75,12 +75,13 @@ function initDraftsTable() {
             {
                 "mDataProp": "department", "sTitle": "Department"
             },
+             {
+                "mDataProp": "company_descs", "sTitle": "Company"
+            },
             {
                 "mDataProp": "warehouse", "sTitle": "Warehouse"
             },
-            {
-                "mDataProp": "company_descs", "sTitle": "Company"
-            },
+           
             {
                 "mDataProp": "doc_no", "sTitle": "Doc No."
             },

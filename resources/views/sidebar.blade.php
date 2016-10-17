@@ -33,7 +33,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li class=" {!! $selected_menu==1 ? 'active' : '' !!}">
                 <a href="/">
-                    <i class="fa fa-info-circle"></i>
+                    <i class="fa fa-bell-o"></i>
                     <span>Latest Entries</span>
                 </a>
             </li>
@@ -43,6 +43,12 @@
                     <span>For Approval</span>
                 </a>
             </li>
+<!--             <li class=" ">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-binoculars"></i>
+                    <span>Document Finder</span>
+                </a>
+            </li>-->
             <!--
             <li class="treeview">
                 <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>

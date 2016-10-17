@@ -40,7 +40,7 @@
                                         </div>-->
                 </div>
                  <div class="box-body" >
-                    <table id="table_drafts" class="table table-bordered table-hover table-striped" ></table>
+                    <table id="table_drafts" class="table table-hover table-striped" ></table>
                 </div>
 
             </div>
@@ -49,7 +49,7 @@
         <div class="col-lg-4" >
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Details</h3>
+                    <h3 class="box-title">Options</h3>
                     <!--                    <div class="box-tools pull-right">
                                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                             </button>

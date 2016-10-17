@@ -21,6 +21,7 @@ class StockcardController extends Controller {
 
     public function stockcards(Request $request) {
         $item_limit = $request->input('item_limit');
+        $search_value = $request->input('search_value');
         
         $stockcards = DB::table("stock_card")
                 ->join('cf_company', 'stock_card.company_cd', '=', 'cf_company.code')
@@ -48,6 +49,23 @@ class StockcardController extends Controller {
                         CONVERT(varchar(12),stock_card.approved_date,102) as approved_date, 
                         stock_card.item_remarks")
                 ->orderBy('audit_date', 'desc')
+                ->where('cf_company.descs', 'like', $search_value)
+                ->orWhere('stock_card.audit_user', 'like', $search_value)
+                ->orWhere('cf_department.descs', 'like', $search_value)
+                ->orWhere('cf_warehouse.descs', 'like', $search_value)
+                ->orWhere('stock_card.doc_no', 'like', $search_value)
+                ->orWhere('stock_card.status', 'like', $search_value)
+                ->orWhere('stock_card.ref_no', 'like', $search_value)
+                ->orWhere('stock_card.item_cd', 'like', $search_value)
+                ->orWhere('item.descs', 'like', $search_value)
+                ->orWhere('stock_card.qty', 'like', $search_value)
+                ->orWhere('stock_card.uom', 'like', $search_value)
+                ->orWhere('stock_card.control_no', 'like', $search_value)
+                ->orWhere('stock_card.po_no', 'like', $search_value)
+                ->orWhere('stock_card.receiving_receipt', 'like', $search_value)
+                ->orWhere('stock_card.created_by', 'like', $search_value)
+                ->orWhere('stock_card.approved_by', 'like', $search_value)
+                ->orWhere('stock_card.item_remarks', 'like', $search_value)
                 ->take($item_limit)
                 ->get();
         return Response::json($stockcards);

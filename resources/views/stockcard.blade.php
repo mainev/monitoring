@@ -19,24 +19,43 @@
         <div class="col-md-12" >
             <div class="box box-default">
                 <div class="box-header with-border">
-                    
-                    <h3 class="box-title">Showing top <span id="displayed_item_limit"></span></h3>
-                   
+
+                    <!--<h3 class="box-title">Showing top <span id="displayed_item_limit"></span></h3>-->
+                    <span>No. of items:</span>
+                    <input id="no_of_records" type="number" class="box-input" placeholder="" style="width: 100px;" onchange="resetTable()">
+
                     <div class="box-tools pull-right">
 <!--                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
                         <button type="button" class="btn btn-box-tool" ><i class="fa fa-gear"></i>
                         </button>-->
+                        <!--                        <div class="col-lg-3 pull-right">
+                                                    <div class="form-group">
+                        
+                        
+                                                        <div class="input-group">
+                                                            
+                                                            <input type="text" class="form-control pull-right" >
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-search"></i>
+                                                            </div>
+                                                        </div>
+                        
+                        
+                                                    </div>
+                        
+                                                </div>-->
 
-                        <span>No. of records displayed</span>
-                        <input id="no_of_records" type="number" class="box-input" placeholder="" style="width: 100px;" onchange="resetTable()">
 
-
+<!--                        <span>Date Filter:</span>
+                        <input id="date" type="text" class="box-input" >
+                        <input id="search" type="button" class="btn btn-info" value="Search">-->
+                        <input id="search" type="text" class="box-input" placeholder="Search..." >
 
                     </div>
                 </div>
                 <div class="box-body " >
-                    <table id="table_stockcards" class="table  table-bordered table-hover table-striped" ></table>
+                    <table id="table_stockcards" class="table   table-hover table-striped" ></table>
                 </div>
 
             </div>

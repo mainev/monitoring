@@ -101,9 +101,14 @@ setTimeout(function () {
         <!-- Datatables -->
         <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js") }}"></script>
         <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
-        <!-- Datepicker -->
+        
+          <!-- Datepicker -->
         <script src="{{ asset ("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js") }}"></script>
 
+        <!-- jQuery UI -->
+         <!--<script src="{{ asset ("/bower_components/AdminLTE/plugins/jQueryUI/jquery-ui.min.js") }}"></script>-->
+              
+      
         <!-- JAVASCRIPTS -->
         <script src="{{ asset ("/app/js/admin_template.js") }}" type="text/javascript"></script>
 

@@ -6,12 +6,13 @@
 
 var table;
 var item_limit;
+
 $(document).ready(function () {
     $('#no_of_records').val(500);
 
     item_limit = $('#no_of_records').val();
 
-    document.getElementById('displayed_item_limit').innerText = item_limit;
+//    document.getElementById('displayed_item_limit').innerText = item_limit;
     initTable();
 
 
@@ -24,7 +25,25 @@ $(document).ready(function () {
         table.api().ajax.reload();
     }, 60000);
 
+
+//    $('#date').datepicker({
+//        autoclose: true
+//    });
+//
+//    $("#date").keyup(function (event) {
+//        if (event.keyCode == 13) {
+//            //$("#id_of_button").click();
+//            alert('enter click');
+//        }
+//    });
+
+    $("#search").keyup(function (e) {
+       // value = $("#search").val();
+        //console.log(value);
+        table.api().ajax.reload();
+    });
 });
+
 function initTable() {
 
     table = $("#table_stockcards").dataTable({
@@ -53,7 +72,7 @@ function initTable() {
                 "contentType": "application/json; charset=utf-8",
                 "type": "GET",
                 "url": sSource,
-                "data": {'item_limit': item_limit},
+                "data": {'item_limit': item_limit, 'search_value': '%'+$("#search").val()+'%'},
                 "success": function (msg) {
                     drafts = msg;
                     var data = {"aaData": drafts};
@@ -75,10 +94,10 @@ function initTable() {
                 "mDataProp": "department", "sTitle": "Department"
             },
             {
-                "mDataProp": "warehouse", "sTitle": "Warehouse"
+                "mDataProp": "company_descs", "sTitle": "Company"
             },
             {
-                "mDataProp": "company_descs", "sTitle": "Company"
+                "mDataProp": "warehouse", "sTitle": "Warehouse"
             },
             {
                 "mDataProp": "doc_no", "sTitle": "Doc No."
@@ -134,6 +153,9 @@ function initTable() {
 
 function resetTable() {
     item_limit = $('#no_of_records').val();
-     document.getElementById('displayed_item_limit').innerText = item_limit;
+//    document.getElementById('displayed_item_limit').innerText = item_limit;
     table.api().ajax.reload();
 }
+;
+
+
