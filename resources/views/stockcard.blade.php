@@ -17,7 +17,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12" >
-            <div class="box box-default">
+            <div class="box box-default transparent ">
                 <div class="box-header with-border">
 
                     <!--<h3 class="box-title">Showing top <span id="displayed_item_limit"></span></h3>-->
@@ -50,14 +50,20 @@
 <!--                        <span>Date Filter:</span>
                         <input id="date" type="text" class="box-input" >
                         <input id="search" type="button" class="btn btn-info" value="Search">-->
-                        <input id="search" type="text" class="box-input" placeholder="Search..." >
 
+                        <div class="has-feedback">
+                            <input id="search" type="text" class="form-control input-sm" placeholder="Search..." onchange="resetTable()">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="box-body " >
-                    <table id="table_stockcards" class="table   table-hover table-striped" ></table>
+                    <table id="table_stockcards" class="table   table-hover table-striped"  ></table>
                 </div>
-
+                <!--                <div class="box-footer clearfix">
+                
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                                </div>-->
             </div>
 
         </div>

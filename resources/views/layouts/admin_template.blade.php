@@ -12,29 +12,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <title>{{ $page_title or "ICMonitoring" }}</title>
-	<link href="{{ asset("/images/monitoring_icon.png") }}" rel="shortcut icon" type="image/x-icon" />
+        <link href="{{ asset("/images/monitoring_icon.png") }}" rel="shortcut icon" type="image/x-icon" />
         <!-- Bootstrap 3.3.2 -->
         <link href="{{ asset("/bower_components/AdminLTE/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
         <!-- Ionicons -->
         <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <!-- Theme style -->
-        <link href="{{ asset("/bower_components/AdminLTE/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
-
-        <link href="{{ asset("/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css")}}" rel="stylesheet" type="text/css" />
 
 
         <!-- PLUGINS-->
         <!-- Datatables -->
-         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.css")}}" rel="stylesheet" type="text/css" />
-
+        <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.css")}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css")}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables_themeroller.css")}}" rel="stylesheet" type="text/css" />
-       
+
         <!-- Datepicker -->
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datepicker/datepicker3.css")}}" rel="stylesheet" type="text/css" />
 
+        <!-- Select2 -->
+        <link href="{{ asset("/bower_components/AdminLTE/plugins/select2/select2.min.css")}}" rel="stylesheet" type="text/css" />
+
+        <!-- Theme style -->
+        <link href="{{ asset("/bower_components/AdminLTE/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset("/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css")}}" rel="stylesheet" type="text/css" />
 
         <!-- REQUIRED JS SCRIPTS -->
         <!-- jQuery 2.1.3 -->
@@ -43,25 +44,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="{{ asset ("/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js") }}" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="{{ asset ("/bower_components/AdminLTE/dist/js/app.min.js") }}" type="text/javascript"></script>
+
+        <!-- PLUGINS- JS -->
+        <!-- Datatables -->
+        <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js") }}"></script>
+        <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
+        <!-- Datepicker -->
+        <script src="{{ asset ("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js") }}"></script>
+        <!-- ChartJS -->
+        <script src="{{ asset ("/bower_components/AdminLTE/plugins/chartjs/Chart.min.js") }}"></script>
+        <!-- Moment -->
+         <script src="{{ asset ("/bower_components/moment/min/moment.min.js") }}"></script>
+
+
+        <!-- Select2 -->
+        <script src="{{ asset ("/bower_components/AdminLTE/plugins/select2/select2.full.min.js") }}"></script>
+
+
         <style>
 
             body {
                 font-family: Roboto, "Helvetica Neue", sans-serif;
             }
-            
+
             table {
                 font-size: 11px;
             }
-            
+
             .content-wrapper{
                 background-image: url('{{ asset("images/office-still-life.jpg") }}');
-                
+
             }
             section.content-header{
                 color: aliceblue;
             }
-            
-            div.box{
+
+            /*            div.box{
+                            opacity: 0.9;
+                        }*/
+
+            div.box.transparent{
                 opacity: 0.9;
             }
 
@@ -82,7 +104,7 @@ setTimeout(function () {
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
 
-             
+
                 <div class="">
                     @yield('content')
                 </div>
@@ -97,22 +119,13 @@ setTimeout(function () {
 
 
 
-        <!--PLUGINS-->
-        <!-- Datatables -->
-        <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js") }}"></script>
-        <script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
-        
-          <!-- Datepicker -->
-        <script src="{{ asset ("/bower_components/AdminLTE/plugins/datepicker/bootstrap-datepicker.js") }}"></script>
-
-        <!-- jQuery UI -->
-         <!--<script src="{{ asset ("/bower_components/AdminLTE/plugins/jQueryUI/jquery-ui.min.js") }}"></script>-->
-              
-      
-        <!-- JAVASCRIPTS -->
-        <script src="{{ asset ("/app/js/admin_template.js") }}" type="text/javascript"></script>
-
 
 
     </body>
+
+    <!-- JAVASCRIPTS -->
+    <script src="{{ asset ("/app/js/admin_template.js") }}" type="text/javascript"></script>
+
+
+
 </html>

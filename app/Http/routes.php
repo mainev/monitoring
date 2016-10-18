@@ -29,6 +29,11 @@ Route::group(['middleware' => ['web']], function () {
      Route::get('/drafts', function () {
         return view('for_approval', ['selected_menu' => "2"]);
     });
+    
+     Route::get('/user_activity', function () {
+        return view('user_activity', ['selected_menu' => "3"]);
+    });
+
 
 
   
@@ -40,6 +45,8 @@ Route::group(['middleware' => ['web']], function () {
     {
           Route::resource('stockcards', 'StockcardController@stockcards');
           Route::get('get_drafts', ['uses' =>'StockcardController@get_drafts']);
+          Route::get('get_users', ['uses' =>'UserController@get_users']);
+          Route::get('Stockcard/user_activity', ['uses' => 'StockcardController@user_activity']);
     
     });
     

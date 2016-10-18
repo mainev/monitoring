@@ -30,7 +30,7 @@
 <section class="content">
     <div class="row">
         <div class="col-lg-8" >
-            <div class="box box-default">
+            <div class="box box-default transparent">
                 <div class="box-header with-border">
                     <h3 class="box-title" id="item_category"></h3>
                     <!--                    <div class="box-tools pull-right">
@@ -47,7 +47,7 @@
 
         </div>
         <div class="col-lg-4" >
-            <div class="box box-default">
+            <div class="box box-default transparent">
                 <div class="box-header with-border">
                     <h3 class="box-title">Options</h3>
                     <!--                    <div class="box-tools pull-right">
@@ -68,7 +68,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-sitemap"></i>
                             </span>
-                            <select id="item_category_cd" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <select id="item_category_cd" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 <option selected="selected" value="RM">Raw Materials</option>
                                 <option value="PM">Packaging Materials</option>
                                 <option value="OS">Office Supplies</option>

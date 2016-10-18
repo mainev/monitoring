@@ -29,7 +29,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">Administration</li>
+            <li class="header">MAIN NAVIGATION</li>
             <!-- Optionally, you can add icons to the links -->
             <li class=" {!! $selected_menu==1 ? 'active' : '' !!}">
                 <a href="/">
@@ -41,6 +41,13 @@
                 <a href="/drafts">
                     <i class="fa fa-check-square-o"></i>
                     <span>For Approval</span>
+                </a>
+            </li>
+             <li class="header">EXTRAS</li>
+              <li class=" {!! $selected_menu==3 ? 'active' : '' !!}">
+                <a href="/user_activity">
+                    <i class="fa fa-area-chart"></i>
+                    <span>User Activity</span>
                 </a>
             </li>
 <!--             <li class=" ">

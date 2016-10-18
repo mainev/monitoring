@@ -22,7 +22,8 @@ class StockcardController extends Controller {
     public function stockcards(Request $request) {
         $item_limit = $request->input('item_limit');
         $search_value = $request->input('search_value');
-        
+
+
         $stockcards = DB::table("stock_card")
                 ->join('cf_company', 'stock_card.company_cd', '=', 'cf_company.code')
                 ->join('cf_department', 'stock_card.dept_cd', '=', 'cf_department.code')
@@ -70,11 +71,11 @@ class StockcardController extends Controller {
                 ->get();
         return Response::json($stockcards);
     }
-    
-    public function get_drafts(Request $request){
-        
+
+    public function get_drafts(Request $request) {
+
         $item_category_cd = $request->input('item_category_cd');
-        
+
         $drafts = DB::table("stock_card")
                 ->join('cf_company', 'stock_card.company_cd', '=', 'cf_company.code')
                 ->join('cf_department', 'stock_card.dept_cd', '=', 'cf_department.code')
@@ -105,7 +106,35 @@ class StockcardController extends Controller {
                 ->orderBy('audit_date', 'desc')
                 ->get();
         return Response::json($drafts);
+    }
+
+    public function user_activity(Request $request) {
+        $username = $request->input('username');
+        $date = $request->input('date');
+        $month = date("m",strtotime($date));
+        $year = date("Y", strtotime($date));
         
+        
+        $user_created = DB::table('stock_card')
+                ->where('stock_card.created_by', $username)
+                ->whereMonth('stock_card.created_date', '=', $month)
+                ->whereYear('stock_card.created_date', '=', $year)
+                ->count(); 
+        
+        $user_approved = DB::table('stock_card')
+                ->where('stock_card.approved_by', $username)
+                ->whereMonth('stock_card.approved_date', '=', $month)
+                ->whereYear('stock_card.approved_date', '=', $year)
+                ->count(); 
+        
+        $user_activity = new \stdClass();
+        $user_activity->created = $user_created;
+        $user_activity->approved = $user_approved;
+        $user_activity->date = $date;
+        $user_activity->month = $month;
+        $user_activity->year = $year;
+        $user_activity->date_label = date('F Y', strtotime($date));
+        return Response::json($user_activity);
     }
 
 }

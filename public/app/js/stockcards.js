@@ -37,11 +37,11 @@ $(document).ready(function () {
 //        }
 //    });
 
-    $("#search").keyup(function (e) {
-       // value = $("#search").val();
-        //console.log(value);
-        table.api().ajax.reload();
-    });
+//    $("#search").keyup(function (e) {
+//       // value = $("#search").val();
+//        //console.log(value);
+//        table.api().ajax.reload();
+//    });
 });
 
 function initTable() {
@@ -72,7 +72,7 @@ function initTable() {
                 "contentType": "application/json; charset=utf-8",
                 "type": "GET",
                 "url": sSource,
-                "data": {'item_limit': item_limit, 'search_value': '%'+$("#search").val()+'%'},
+                "data": {'item_limit': $('#no_of_records').val(), 'search_value': '%'+$("#search").val()+'%'},
                 "success": function (msg) {
                     drafts = msg;
                     var data = {"aaData": drafts};
@@ -152,7 +152,7 @@ function initTable() {
 ;
 
 function resetTable() {
-    item_limit = $('#no_of_records').val();
+   // item_limit = $('#no_of_records').val();
 //    document.getElementById('displayed_item_limit').innerText = item_limit;
     table.api().ajax.reload();
 }
