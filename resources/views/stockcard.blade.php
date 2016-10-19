@@ -17,7 +17,7 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12" >
-            <div class="box box-default transparent ">
+            <div class="box box-primary transparent ">
                 <div class="box-header with-border">
 
                     <!--<h3 class="box-title">Showing top <span id="displayed_item_limit"></span></h3>-->
@@ -72,11 +72,10 @@
 
 </section>
 
+
+
 <!-- JAVASCRIPTS -->
 <script src="{{ asset ("/app/js/stockcards.js") }}" type="text/javascript"></script>
-
-
-
 
 
 @endsection

@@ -6,7 +6,12 @@
 
 var users;
 var month_sets = [];
+var lineChart=null;
+var lineChartCanvas;
+var lineChartOptions;
 $(document).ready(function () {
+
+
 
 
 
@@ -28,7 +33,8 @@ $(document).ready(function () {
 
     $("select[id*='user']").bind("change", function () {
         document.getElementById('selected_user').innerText = $('#user').val() + "'s Activity";
-        //initChart();
+
+
         computeChartData();
     });
 
@@ -58,17 +64,18 @@ function computeChartData() {
                     approved: msg.approved,
                     month: msg.month,
                     year: msg.year,
-                    date_label : msg.date_label
+                    date_label: msg.date_label,
+                    modified: msg.modified
                 };
 
                 month_sets.unshift(month);
-                // console.log(month_sets);
+
             },
             "error": function (msg) {
                 console.log(msg);
             }});
     }
-    // console.log(month_sets);
+
     initChart(month_sets);
 
 
@@ -78,10 +85,10 @@ function computeChartData() {
 function initChart(month_sets) {
 
     // Get context with jQuery - using jQuery's .get() method.
-    var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
-    // This will get the first returned node in the jQuery collection.
-    var areaChart = new Chart(areaChartCanvas);
-    var areaChartData = {
+    lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+
+
+    var lineChartData = {
         // labels: ["January", "February", "March", "April", "May", "June", "July"],
         labels: [month_sets[0].date_label, month_sets[1].date_label, month_sets[2].date_label, month_sets[3].date_label, month_sets[4].date_label, month_sets[5].date_label, month_sets[6].date_label],
         datasets: [
@@ -104,10 +111,21 @@ function initChart(month_sets) {
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(60,141,188,1)",
                 data: [month_sets[0].approved, month_sets[1].approved, month_sets[2].approved, month_sets[3].approved, month_sets[4].approved, month_sets[5].approved, month_sets[6].approved]
+            },
+            {
+                label: "Modified",
+                fillColor: "#18bb6a",
+                strokeColor: "#18bb6a",
+                pointColor: "#18bb6a",
+                pointStrokeColor: "#18bb6a",
+                pointHighlightFill: "#18bb6a",
+                pointHighlightStroke: "#18bb6a",
+                data: [month_sets[0].modified, month_sets[1].modified, month_sets[2].modified, month_sets[3].modified, month_sets[4].modified, month_sets[5].modified, month_sets[6].modified]
             }
         ]
     };
-    var areaChartOptions = {
+
+    lineChartOptions = {
         //Boolean - If we should show the scale at all
         showScale: true,
         //Boolean - Whether grid lines are shown across the chart
@@ -143,9 +161,14 @@ function initChart(month_sets) {
         //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: true,
         //Boolean - whether to make the chart responsive to window resizing
-        responsive: true
+        responsive: true,
+        datasetFill: false
     };
+  
+    // This will get the first returned node in the jQuery collection.
+    lineChart = new Chart(lineChartCanvas);
     //Create the line chart
-    areaChart.Line(areaChartData, areaChartOptions);
+    lineChart.Line(lineChartData, lineChartOptions);
+  
 
 }

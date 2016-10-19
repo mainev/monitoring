@@ -26,6 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.css")}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css")}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/jquery.dataTables_themeroller.css")}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset("/bower_components/AdminLTE/plugins/datatables/buttons.dataTables.min.css")}}" rel="stylesheet" type="text/css" />
 
         <!-- Datepicker -->
         <link href="{{ asset("/bower_components/AdminLTE/plugins/datepicker/datepicker3.css")}}" rel="stylesheet" type="text/css" />
@@ -126,6 +127,14 @@ setTimeout(function () {
     <!-- JAVASCRIPTS -->
     <script src="{{ asset ("/app/js/admin_template.js") }}" type="text/javascript"></script>
 
+
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/dataTables.buttons.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/buttons.flash.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/jszip.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/pdfmake.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/vfs_fonts.js") }}" type="text/javascript"></script>
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/buttons.html5.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset ("/bower_components/AdminLTE/plugins/datatables/buttons.print.min.js") }}" type="text/javascript"></script>
 
 
 </html>

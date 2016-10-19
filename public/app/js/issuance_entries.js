@@ -3,58 +3,43 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 var table;
-var item_limit;
-
+var drafts = {};
+var item_category_cd;
+var item_category;
 $(document).ready(function () {
-    $('#no_of_records').val(500);
 
-    item_limit = $('#no_of_records').val();
+    item_category_cd = $('#item_category_cd').val();
+    item_category = $('#item_category_cd').find(":selected").text();
+    document.getElementById('issuance_item_category').innerText = item_category;
 
-//    document.getElementById('displayed_item_limit').innerText = item_limit;
-    initTable();
+    initDraftsTable(item_category_cd);
+    $('#item_category_cd').on('change', function (d) {
+        table.api().ajax.reload();
+    });
 
-
-    /**
-     * Table will reload after 60 seconds.
-     * @returns {undefined}
-     */
-    setTimeout(function () {
-        // table.api().ajax.reload();
-    }, 60000);
-
-
-//    $('#date').datepicker({
-//        autoclose: true
-//    });
-//
-//    $("#date").keyup(function (event) {
-//        if (event.keyCode == 13) {
-//            //$("#id_of_button").click();
-//            alert('enter click');
-//        }
-//    });
-
-//    $("#search").keyup(function (e) {
-//       // value = $("#search").val();
-//        //console.log(value);
-//        table.api().ajax.reload();
-//    });
+    $('#trx_type').on('change', function (d) {
+        table.api().ajax.reload();
+    });
+     $('#status').on('change', function (d) {
+        table.api().ajax.reload();
+    });
 });
 
-function initTable() {
 
-    table = $("#table_stockcards").dataTable({
-       
+function initDraftsTable() {
+
+    table = $("#table_drafts").dataTable({
         "bStateSave": false,
         "bLengthChange": false,
         "filter": false,
         "responsive": true,
         "ordering": false,
         "orderClasses": false,
-        "pageLength": 6,
+        "pageLength": 5,
         "info": false,
+        //  "scrollY": "400px",
+        // "scrollY": "300px",
         "scrollX": true,
         // "scrollCollapse": false,
         "scrollCollapse": false,
@@ -63,7 +48,7 @@ function initTable() {
         "bDestroy": true,
         "bServerSide": false,
         "bAutoWidth": false,
-        "sAjaxSource": "api/stockcards",
+        "sAjaxSource": "api/Stockcard/get_issuance",
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {},
         "fnServerData": function (sSource, aoData, fnCallback) {
 
@@ -72,12 +57,20 @@ function initTable() {
                 "contentType": "application/json; charset=utf-8",
                 "type": "GET",
                 "url": sSource,
-                "data": {'item_limit': $('#no_of_records').val(), 'search_value': '%' + $("#search").val() + '%'},
+                "data": {
+                    "item_category_cd": $('#item_category_cd').val(),
+                    'trx_type': $('#trx_type').val(),
+                    'status':$('#status').val()
+                },
                 "success": function (msg) {
                     drafts = msg;
                     var data = {"aaData": drafts};
                     fnCallback(data);
 
+                    
+                    item_category = $('#item_category_cd').find(":selected").text();
+                    document.getElementById('issuance_item_category').innerText = item_category;
+                    document.getElementById('number_of_rows').innerText = drafts.length;
 
                 },
                 "error": function (msg) {
@@ -136,36 +129,11 @@ function initTable() {
                 "mDataProp": "created_date", "sTitle": "Date Created"
             },
             {
-                "mDataProp": "approved_date", "sTitle": "Date Approved"
-            },
-            {
-                "mDataProp": "approved_by", "sTitle": "Approved By"
-            },
-            {
                 "mDataProp": "item_remarks", "sTitle": "Item Remarks"
-            }],
-        dom: 'Bfrtip',
-        buttons: [
-            'copy',  'excel'
-        ]
+            }]
 
 
     });
-//
-//table.DataTable( {
-//        dom: 'Bfrtip',
-//        buttons: [
-//            'copy', 'csv', 'excel', 'pdf', 'print'
-//        ]
-//    } );
+
+
 }
-;
-
-function resetTable() {
-    // item_limit = $('#no_of_records').val();
-//    document.getElementById('displayed_item_limit').innerText = item_limit;
-    table.api().ajax.reload();
-}
-;
-
-

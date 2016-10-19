@@ -36,7 +36,7 @@
                 <div class="box-body" >
 
                     <div class="chart">
-                        <canvas id="areaChart" style="height:300px"></canvas>
+                        <canvas id="lineChart" style="height:300px"></canvas>
 
                     </div>
 
