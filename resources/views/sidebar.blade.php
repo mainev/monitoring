@@ -43,11 +43,24 @@
                     <span>For Approval</span>
                 </a>
             </li>
-             <li class=" {!! $selected_menu==4 ? 'active' : '' !!}">
+            <li class=" {!! $selected_menu==4 ? 'active' : '' !!}">
                 <a href="/issuance">
                     <i class="glyphicon glyphicon-export"></i>
                     <span>Issuance Entries</span>
                 </a>
+            </li>
+            <li class="treeview  {!! ($selected_menu==5) ? 'active' : '' !!}">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-files-o"></i>
+                    <span>Reports</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li class="{!! ($selected_menu==5) ? 'active' : '' !!}">
+                        <a href="/item_reports"> 
+                            <i class="fa fa-qrcode"></i>
+                            <span>Items</span></a>
+                    </li>
+                   
+                </ul>
             </li>
             <li class="header">EXTRAS</li>
             <li class=" {!! $selected_menu==3 ? 'active' : '' !!}">
@@ -62,14 +75,8 @@
                                 <span>Document Finder</span>
                             </a>
                         </li>-->
-            <!--
-            <li class="treeview">
-                <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
-                </ul>
-            </li>-->
+
+
         </ul>
     </section>
     <!-- /.sidebar -->
